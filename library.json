@@ -1,0 +1,21 @@
+{
+    "name": "ESP Connection Library",
+    "version": "0.2.0",
+    "description": "Library to communicate between two ESP Microcontroller in a very simple way.",
+    "keywords": ["communication", "esp-now", "platformio"],
+    "authors": [
+      {
+        "name": "Gustav Rietschel",
+        "email": "gustav.rietschel@code.berlin",
+        "maintainer": true
+      }
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/GustavRietschel/ESP_Now_BLE_Library"
+    },
+    "license": "MIT",
+    "frameworks": ["esp-idf"],
+    "platforms": ["espressif32"]
+  }
+  
