@@ -1,6 +1,6 @@
 {
     "name": "ESP Connection Library",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Library to communicate between two ESP Microcontroller in a very simple way.",
     "keywords": ["communication", "esp-now", "platformio"],
     "authors": [
