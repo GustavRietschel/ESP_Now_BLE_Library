@@ -16,6 +16,9 @@
     },
     "license": "MIT",
     "frameworks": ["esp-idf"],
-    "platforms": ["espressif32"]
+    "platforms": ["espressif32"],
+    "include": [
+      "src"
+    ]
   }
   
