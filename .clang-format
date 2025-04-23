@@ -1,0 +1,17 @@
+BasedOnStyle: LLVM
+IndentWidth: 4                    # 4 Leerzeichen für Einrückungen
+TabWidth: 4                       # Tabulatorbreite (falls Tabs verwendet werden)
+UseTab: Never                     # Verwende keine Tabs, nur Leerzeichen
+ColumnLimit: 80                   # Maximale Zeilenlänge (80 Zeichen)
+BreakBeforeBraces: Allman         # Klammern immer in einer neuen Zeile (Allman-Stil)
+AllowShortFunctionsOnASingleLine: Inline # Kurze Funktionen dürfen in einer Zeile stehen
+PointerAlignment: Left            # Zeiger an den Typ binden (z. B. `int* ptr`)
+SpaceBeforeParens: ControlStatements # Leerzeichen vor Klammern bei Kontrollstrukturen
+SpacesInParentheses: false        # Keine Leerzeichen innerhalb von Klammern
+SpacesInSquareBrackets: false     # Keine Leerzeichen innerhalb von eckigen Klammern
+Cpp11BracedListStyle: true        # Einheitlicher Stil für Initialisierungslisten
+SortIncludes: false               # Keine automatische Sortierung von Includes
+IncludeBlocks: Preserve           # Behalte die ursprüngliche Gruppierung der Includes
+ReflowComments: true              # Kommentare an Zeilenlänge anpassen
+AlignTrailingComments: true       # Kommentare am Ende von Zeilen ausrichten
+AlwaysBreakAfterDefinitionReturnType: None # Rückgabetyp bleibt in der gleichen Zeile

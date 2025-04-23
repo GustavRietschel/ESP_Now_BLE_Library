@@ -1,17 +1,22 @@
+#include "connections.h"
+
 #include "esp_netif.h"
 #include "esp_wifi.h"
 #include "nvs_flash.h"
-#include "connections.h"
+#include <esp_now.h>
+#include <esp_wifi.h>
+#include <string.h>
 
-
-void ESP_NOW::wifiInit() 
+void ESP_NOW::wifiInit()
 {
     esp_err_t ret = nvs_flash_init();
-    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        ESP_ERROR_CHECK( nvs_flash_erase() );
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES ||
+        ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
+    {
+        ESP_ERROR_CHECK(nvs_flash_erase());
         ret = nvs_flash_init();
     }
-    ESP_ERROR_CHECK( ret );
+    ESP_ERROR_CHECK(ret);
 
     ESP_ERROR_CHECK(esp_netif_init());
     ESP_ERROR_CHECK(esp_event_loop_create_default());
@@ -23,17 +28,17 @@ void ESP_NOW::wifiInit()
     ESP_ERROR_CHECK(esp_wifi_set_channel(1, WIFI_SECOND_CHAN_NONE));
 }
 
-
-void ESP_NOW::start(onDataSend sendCb, onDataReceive receiveCb) {
-   wifiInit();
-   ESP_ERROR_CHECK(esp_now_init());
-   esp_now_register_send_cb(sendCb);
-   esp_now_register_recv_cb(receiveCb);
+void ESP_NOW::start(onDataSend sendCb, onDataReceive receiveCb)
+{
+    wifiInit();
+    ESP_ERROR_CHECK(esp_now_init());
+    esp_now_register_send_cb(sendCb);
+    esp_now_register_recv_cb(receiveCb);
 };
 
-void ESP_NOW::addNewESP(uint8_t macAddr[6]) 
+void ESP_NOW::addNewESP(uint8_t macAddr[6])
 {
-    esp_now_peer_info peer_info = {0};
+    esp_now_peer_info_t peer_info = {0};
     peer_info.channel = 1;
     peer_info.encrypt = false;
     memcpy(peer_info.peer_addr, macAddr, 6);
@@ -42,6 +47,10 @@ void ESP_NOW::addNewESP(uint8_t macAddr[6])
 
 void ESP_NOW::sendData(uint8_t macAddr[6], const void* data, size_t len)
 {
-    ESP_ERROR_CHECK(esp_now_send(macAddr, reinterpret_cast<const uint8_t*>(data), len));
-    vTaskDelay(1000);
+    esp_err_t result =
+        esp_now_send(macAddr, reinterpret_cast<const uint8_t*>(data), len);
+    if (result != ESP_OK)
+    {
+        printf("Fehler beim Senden: %s\n", esp_err_to_name(result));
+    };
 }
