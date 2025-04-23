@@ -1,5 +1,5 @@
 {
-    "name": "ESP Connection Library",
+    "name": "ESP_Now_BLE_Library",
     "version": "0.2.1",
     "description": "Library to communicate between two ESP Microcontroller in a very simple way.",
     "keywords": ["communication", "esp-now", "platformio"],
