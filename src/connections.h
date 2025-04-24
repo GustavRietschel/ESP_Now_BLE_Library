@@ -1,13 +1,22 @@
 #ifndef CONNECTIONS_H
 #define CONNECTIONS_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <esp_now.h>
+
+
+#ifdef __cplusplus
+}
+#endif
 
 class ESP_NOW
 {
 public:
     // type definitions for callback functions that are created by the user
-    typedef void (*onDataReceive)(const esp_now_recv_info* esp_now_info,
+    typedef void (*onDataReceive)(const esp_now_recv_info_t* esp_now_info,
                                   const uint8_t* data, int len);
     typedef void (*onDataSend)(const uint8_t* macAddr,
                                esp_now_send_status_t status);

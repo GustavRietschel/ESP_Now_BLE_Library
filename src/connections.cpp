@@ -1,10 +1,17 @@
 #include "connections.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "esp_netif.h"
 #include "esp_wifi.h"
 #include "nvs_flash.h"
-#include <esp_wifi.h>
 #include <string.h>
+
+#ifdef __cplusplus
+}
+#endif
 
 void ESP_NOW::wifiInit()
 {
